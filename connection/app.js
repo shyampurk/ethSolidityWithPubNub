@@ -5,8 +5,8 @@ var Subscribe = contract(Subscribe_artifact);
 var PubNub = require('pubnub')
 
 pubnub = new PubNub({
-        publishKey : 'pub-c-ba352f79-f9b4-4604-a9ec-34d7d02706e1',
-        subscribeKey : 'sub-c-4fea603a-3196-11e9-ae9a-6e31a7d5aca7'
+        publishKey : '<PUBNUB_PUBLISH_KEY>',
+        subscribeKey : '<PUBNUB_SUBSCRIBE_KEY>'
     })
 
 module.exports = {
