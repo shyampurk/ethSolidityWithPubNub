@@ -5,8 +5,8 @@ $(document).ready(function () {
 	let  currTemplate;
 
 	var pubnub = new PubNub({
-		    subscribeKey: "sub-c-4fea603a-3196-11e9-ae9a-6e31a7d5aca7",
-		    publishKey: "pub-c-ba352f79-f9b4-4604-a9ec-34d7d02706e1",
+		    subscribeKey: "<PUBNUB_SUBSCRIBE_KEY>",
+		    publishKey: "<PUBNUB_PUBLISH_KEY>",
 		    ssl: true
 	})
 
