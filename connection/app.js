@@ -21,9 +21,7 @@ module.exports = {
 
     //Set up listened for Subscription  events
      Subscribe.deployed().then(function(instance) {
-      // Restart Chrome if you are unable to receive this event
-      // This is a known issue with Metamask
-      // https://github.com/MetaMask/metamask-extension/issues/2393
+      
       instance.subscribedEvent({}, {
         fromBlock: 0,
         toBlock: 'latest'
