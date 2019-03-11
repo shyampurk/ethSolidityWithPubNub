@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Insurance Subscription</title>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <!-- jquery -->
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <!-- Bootstrap css-->
+   	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" >
+
+   
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/3.0.0/handlebars.min.js"></script>
+  <script src="https://cdn.pubnub.com/sdk/javascript/pubnub.4.21.7.min.js"></script>
+    <link href="stylesheets/app.css" rel="stylesheet">
+
+    <style>
+        #options{
+            height: 40px;
+            width: 90%;
+            font-size: 1.2em;
+        }
+        #selecttag{
+            font-size: 1.7em;
+        }
+        
+        .select, .send, #all-accounts{
+            display: none;
+        }
+        .active{
+            display: block !important;
+        }
+    </style>
+</head>
+<body>
+  <div class="container-fluid">
+    <div class="row justify-content-center">
+      <div class="col-md-6 col-md-offset-3">
+        <div class="select active">
+            <h1>AVInsure</h1>
+            <h2>Subscription Opt-In Form</h2>
+            <br>
+            <h3 id="selecttag">Enter Your Account</h3>
+            <input type="text" id="acc-no" name="account" class="form-control">
+            <div class="subscription-stage">
+              
+          </div>
+        </div>
+      </div>
+      </div>
+      <div class="row justify-content-center">
+        <div class="col-md-6 col-md-offset-3">
+            <button type="button"  id="submit" class="btn btn-primary btn-lg ">Submit</button>
+            <button type="button" class="btn btn-danger btn-lg float-right" onclick="window.location.href = 'http://localhost:3000';" >Cancel</button>
+        </div>
+      </div>
+  </div>
+  <script id="confirm-template" type="text/x-handlebars-template">
+        <!-- Subscription Confirmation -->
+        <div class="card">
+            <div class="card-header text-white">
+              Welcome {{accountid}}
+            </div>
+            <div class="card-body">
+              <h4 class="card-title">We are glad that you have opted for our subscription</h4>
+              <p class="card-text">You are just one step away from availing the benefits of our subscription plan. Please confirm whether you want to go ahead</p>
+              <a class="btn btn-primary text-white">Yes ! I Confirm</a>
+            </div>
+         </div>
+  </script>
+  <script id="subscribed-template" type="text/x-handlebars-template">
+        <!-- Already Subscribed -->
+        <div class="card">
+            <div class="card-header text-white">
+              Welcome {{accountid}}
+            </div>
+            <div class="card-body">
+              <h4 class="card-title">You are already subscribed</h4>
+              <p class="card-text">You are one among our privileged {{subscriptionCount}} subscribers. There is no further actions needed from your side</p>
+              <button class="btn btn-primary">Ok</button>
+            </div>
+         </div>
+  </script>
+  <script id="loading-template" type="text/x-handlebars-template">
+     <!-- Loading Animation -->
+    <div class="card">
+      <div class="card-header text-white">
+         Welcome {{accountid}}
+      </div>
+      <div class="card-body">
+        <div class="text-center">
+           <div class="spinner-border" role="status">
+             <span class="sr-only">Loading...</span>
+           </div>
+        </div>
+     </div>
+  </script>
+  <script id="activation-template" type="text/x-handlebars-template">
+        <!-- Subscription Activation -->
+        <div class="card">
+            <div class="card-header text-white">
+              Welcome {{accountid}}
+            </div>
+            <div class="card-body">
+              <h4 class="card-title">Thank you for subscribing to our service</h4>
+              
+              <p class="card-text">For your reference, your transaction hash code is {{transCode}} </p>
+              <button class="btn btn-primary">Ok</button>
+            </div>
+         </div>
+  </script>
+    
+  <script src="javascript/accounts.js"></script>
+</body>
+</html>
